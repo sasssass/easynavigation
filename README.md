@@ -7,7 +7,7 @@ Simplify navigation in your Compose project with auto-generated helper functions
 
 Installation : 
 1. add maven("https://jitpack.io") to your setting.gradle
-2. add ksp plugin in your project level gradle and apply it in your app level gradle
+2. add ksp plugin in your project level gradle and apply it in your app level gradle (be aware that your Kotlin version must be suitable for your ksp version, if you're using Kotlin 2.0.0 or above you need compose compiler as plugin)
 3. add dependencies in your app level gradle :
 ```
 implementation("com.github.sasssass.easynavigation:compose-navigation-annotation:0.3")
