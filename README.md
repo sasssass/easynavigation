@@ -1,4 +1,6 @@
 [![](https://jitpack.io/v/sasssass/easynavigation.svg)](https://jitpack.io/#sasssass/easynavigation)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
 
 
 Simplify navigation in your Compose project with auto-generated helper functions for passing both required and optional arguments to your composables.
