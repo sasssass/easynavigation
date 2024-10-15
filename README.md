@@ -36,6 +36,62 @@ fun ScreenWithOptionalArguments(
 }
 ```
 
+this gives you a generated code like this : 
+
+```
+public object ScreenWithOptionalArgumentsGraphNode {
+  public val rawRoute: String = "screen_with_optional_arguments"
+
+  public val route: String =
+      "screen_with_optional_arguments/{id}/{name}?age={age}&nickName={nickName}"
+
+  private val args: Array<String> = arrayOf("id", "name")
+
+  private val optionalArgs: Array<String> = arrayOf("age", "nickName")
+
+  public const val ARG_OPTIONAL_age: String = "age"
+
+  public const val ARG_OPTIONAL_nickName: String = "nickName"
+
+  public const val ARG_id: String = "id"
+
+  public const val ARG_name: String = "name"
+
+  public fun navigationRoute(
+    arg_id: String,
+    arg_name: String,
+    optionalArg_age: String?,
+    optionalArg_nickName: String?,
+  ): String {
+    val ret = buildString {
+    append(rawRoute)
+    append("/$arg_id")
+    append("/$arg_name")
+    append("?")
+    if (optionalArg_age != null) {
+        append("age=$optionalArg_age")
+    	append("&")
+    }
+    if (optionalArg_nickName != null) {
+        append("nickName=$optionalArg_nickName")
+    }}
+    return ret
+  }
+}
+```
+
+if you don't declare args or optionalArgs for your annotation the code would be simpler and you won't see any related code for those parameters
+
+ARG_ + name = normal argument key
+
+ARG_OPTIONAL + name = optional argument key
+
+rawRoute = raw version of the route without declraing needed arguments
+
+route = processed version of route which you can pass to you NavHost
+
+navigationRoute = the fucntion which you can pass your argument and optionalArguments (if there're any) and in return it will pass you the route you need to pass to navController.navigate() function
+
 You can then navigate effortlessly with the generated helper functions:
 
 ```
