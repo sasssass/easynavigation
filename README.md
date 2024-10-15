@@ -1,4 +1,14 @@
+[![](https://jitpack.io/v/sasssass/easynavigation.svg)](https://jitpack.io/#sasssass/easynavigation)
+
+
 Simplify navigation in your Compose project with auto-generated helper functions for passing both required and optional arguments to your composables.
+
+Installation : 
+1. add maven("https://jitpack.io") to your setting.gradle
+2. add ksp plugin in your project level gradle and apply it in your app level gradle
+3. add dependencies in your app level gradle :
+           implementation("com.github.sasssass.easynavigation:compose-navigation-annotation:0.3")
+           ksp("com.github.sasssass.easynavigation:compose-navigation-annotation-helper:0.3")
 
 Using the @NavigationNode annotation above your composable function, you can easily specify parameters like "route", "args", and "optionalArgs". This annotation automatically generates navigation code for you, reducing boilerplate and making your navigation logic cleaner and easier to maintain.
 
