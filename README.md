@@ -8,10 +8,10 @@ Installation :
 2. add ksp plugin in your project level gradle and apply it in your app level gradle
 3. add dependencies in your app level gradle :
 
-**implementation("com.github.sasssass.easynavigation:compose-navigation-annotation:0.3")
-**
-**ksp("com.github.sasssass.easynavigation:compose-navigation-annotation-helper:0.3")
-**
+implementation("com.github.sasssass.easynavigation:compose-navigation-annotation:0.3")
+
+ksp("com.github.sasssass.easynavigation:compose-navigation-annotation-helper:0.3")
+
 Using the @NavigationNode annotation above your composable function, you can easily specify parameters like "route", "args", and "optionalArgs". This annotation automatically generates navigation code for you, reducing boilerplate and making your navigation logic cleaner and easier to maintain.
 
 Generated Helper Code Pattern:
