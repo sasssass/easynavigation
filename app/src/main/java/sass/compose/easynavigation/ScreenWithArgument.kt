@@ -20,7 +20,7 @@ fun SimpleScreen(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally) {
         Button(modifier = Modifier.testTag("btn1"), onClick = {
             navController.navigate(ScreenWithArgumentGraphNode.navigationRoute(
-                arg_id = "123", arg_name = "Ali"
+                id = "123", name = "Ali"
             ))
         }) {
             Text(text = "Go To Screen with Arguments")
@@ -37,7 +37,7 @@ fun ScreenWithArgument(navController: NavController, id: String, name: String) {
         Text(text = "You're $name with id as $id")
         Button(modifier = Modifier.testTag("btn2"), onClick = {
             navController.navigate(ScreenWithOptionalArgumentsGraphNode.navigationRoute(
-                arg_id = id, arg_name = name, optionalArg_nickName = "Sadegh", optionalArg_age = null
+                id = id, name = name, nickName = "Sadegh", age = null
             ))
         }) {
             Text(text = "Go To Screen with Optional Arguments")

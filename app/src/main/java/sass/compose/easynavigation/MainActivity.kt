@@ -21,17 +21,17 @@ class MainActivity : ComponentActivity() {
                 }
 
                 composable(ScreenWithArgumentGraphNode.route) {backStackEntry ->
-                    val id = checkNotNull(backStackEntry.arguments?.getString(ScreenWithArgumentGraphNode.ARG_id))
-                    val name = checkNotNull(backStackEntry.arguments?.getString(ScreenWithArgumentGraphNode.ARG_name))
+                    val id = checkNotNull(backStackEntry.arguments?.getString(ScreenWithArgumentGraphNode.id))
+                    val name = checkNotNull(backStackEntry.arguments?.getString(ScreenWithArgumentGraphNode.name))
 
                     ScreenWithArgument(navController = navController, id, name)
                 }
 
                 composable(ScreenWithOptionalArgumentsGraphNode.route) {backStackEntry ->
-                    val id = checkNotNull(backStackEntry.arguments?.getString(ScreenWithOptionalArgumentsGraphNode.ARG_id))
-                    val name = checkNotNull(backStackEntry.arguments?.getString(ScreenWithOptionalArgumentsGraphNode.ARG_name))
-                    val nickName = backStackEntry.arguments?.getString(ScreenWithOptionalArgumentsGraphNode.ARG_OPTIONAL_nickName)
-                    val age = backStackEntry.arguments?.getString(ScreenWithOptionalArgumentsGraphNode.ARG_OPTIONAL_age)
+                    val id = checkNotNull(backStackEntry.arguments?.getString(ScreenWithOptionalArgumentsGraphNode.id))
+                    val name = checkNotNull(backStackEntry.arguments?.getString(ScreenWithOptionalArgumentsGraphNode.name))
+                    val nickName = backStackEntry.arguments?.getString(ScreenWithOptionalArgumentsGraphNode.nickName)
+                    val age = backStackEntry.arguments?.getString(ScreenWithOptionalArgumentsGraphNode.age)
                     ScreenWithOptionalArguments(
                         name = name,
                         id = id,

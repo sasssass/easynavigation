@@ -68,13 +68,13 @@ class NodeProcessor(
 
         optionalArgs.forEach {
             typeBuilder.addProperty(
-                PropertySpec.builder("ARG_OPTIONAL_$it",String::class).initializer("%S", it).addModifiers(KModifier.CONST).build()
+                PropertySpec.builder("$it",String::class).initializer("%S", it).addModifiers(KModifier.CONST).build()
             )
         }
 
         args.forEach {
             typeBuilder.addProperty(
-                PropertySpec.builder("ARG_$it",String::class).initializer("%S", it).addModifiers(KModifier.CONST).build()
+                PropertySpec.builder("$it",String::class).initializer("%S", it).addModifiers(KModifier.CONST).build()
             )
         }
 
@@ -112,24 +112,24 @@ class NodeProcessor(
 
     private fun generateNavigationRoute(args: ArrayList<String>, optionalArgs: ArrayList<String>): FunSpec {
         val funBuilder = FunSpec.builder("navigationRoute")
+
         val argsCode = buildString {
             args.forEach {
                 funBuilder.addParameter(
-                    "arg_$it",
+                    "$it",
                     String::class
                 )
 
                 append("""
-                append("/${'$'}arg_$it")
+                append("/${'$'}$it")
                 """.trimIndent())
                 append("\n")
             }
         }
-
         val optionalArgsCode = buildString {
             optionalArgs.forEachIndexed { index, it ->
                 funBuilder.addParameter(
-                    "optionalArg_$it",
+                    "$it",
                     String::class.asTypeName().copy(nullable = true)
                 )
 
@@ -137,8 +137,8 @@ class NodeProcessor(
                     append("append(\"?\")")
                 append("\n")
                 append("""
-                    if (optionalArg_$it != null) {
-                        append("$it=${'$'}optionalArg_$it")
+                    if ($it != null) {
+                        append("$it=${'$'}$it")
                 """.trimIndent())
                 append("\n")
                 if (index < optionalArgs.size - 1) {
@@ -152,13 +152,12 @@ class NodeProcessor(
             }
         }
 
-
         val code = buildString {
             append("val ret = buildString {\n")
             append("append(rawRoute)\n")
             append(argsCode)
             append(optionalArgsCode)
-            append("}\n")
+            append("\n}\n")
             append("return ret")
         }
 
