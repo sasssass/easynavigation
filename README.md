@@ -50,42 +50,39 @@ public object ScreenWithOptionalArgumentsGraphNode {
 
   private val optionalArgs: Array<String> = arrayOf("age", "nickName")
 
-  public const val ARG_OPTIONAL_age: String = "age"
+  public const val age: String = "age"
 
-  public const val ARG_OPTIONAL_nickName: String = "nickName"
+  public const val nickName: String = "nickName"
 
-  public const val ARG_id: String = "id"
+  public const val id: String = "id"
 
-  public const val ARG_name: String = "name"
+  public const val name: String = "name"
 
   public fun navigationRoute(
-    arg_id: String,
-    arg_name: String,
-    optionalArg_age: String?,
-    optionalArg_nickName: String?,
+    id: String,
+    name: String,
+    age: String?,
+    nickName: String?,
   ): String {
     val ret = buildString {
     append(rawRoute)
-    append("/$arg_id")
-    append("/$arg_name")
+    append("/$id")
+    append("/$name")
     append("?")
-    if (optionalArg_age != null) {
-        append("age=$optionalArg_age")
+    if (optionalage != null) {
+        append("age=$age")
     	append("&")
     }
-    if (optionalArg_nickName != null) {
-        append("nickName=$optionalArg_nickName")
-    }}
+    if (optionalnickName != null) {
+        append("nickName=$nickName")
+    }
+    }
     return ret
   }
 }
 ```
 
 if you don't declare args or optionalArgs for your annotation the code would be simpler and you won't see any related code for those parameters
-
-ARG_ + name = normal argument key
-
-ARG_OPTIONAL + name = optional argument key
 
 rawRoute = raw version of the route without declraing needed arguments
 
@@ -97,17 +94,17 @@ You can then navigate effortlessly with the generated helper functions:
 
 ```
 navController.navigate(ScreenWithOptionalArgumentsGraphNode.navigationRoute(
-                arg_id = id, arg_name = name, optionalArg_nickName = "Sadegh", optionalArg_age = null
+                id = id, name = name, optionalnickName = "Sadegh", optionalage = null
             )
 ```
 Or use it within a composable block for handling back stack entries:
 
 ```
 composable(ScreenWithOptionalArgumentsGraphNode.route) {backStackEntry ->
-                    val id = checkNotNull(backStackEntry.arguments?.getString(ScreenWithOptionalArgumentsGraphNode.ARG_id))
-                    val name = checkNotNull(backStackEntry.arguments?.getString(ScreenWithOptionalArgumentsGraphNode.ARG_name))
-                    val nickName = backStackEntry.arguments?.getString(ScreenWithOptionalArgumentsGraphNode.ARG_OPTIONAL_nickName)
-                    val age = backStackEntry.arguments?.getString(ScreenWithOptionalArgumentsGraphNode.ARG_OPTIONAL_age)
+                    val id = checkNotNull(backStackEntry.arguments?.getString(ScreenWithOptionalArgumentsGraphNode.id))
+                    val name = checkNotNull(backStackEntry.arguments?.getString(ScreenWithOptionalArgumentsGraphNode.name))
+                    val nickName = backStackEntry.arguments?.getString(ScreenWithOptionalArgumentsGraphNode.nickName)
+                    val age = backStackEntry.arguments?.getString(ScreenWithOptionalArgumentsGraphNode.age)
                     ScreenWithOptionalArguments(
                         name = name,
                         id = id,
